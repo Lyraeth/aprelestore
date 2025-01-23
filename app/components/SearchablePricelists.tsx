@@ -43,29 +43,23 @@ export default function SearchablePricelists({
             <div className="flex justify-center mb-5">
                 <div className="relative w-full max-w-lg">
                     <CiSearch
-                        className="absolute top-3 left-4 text-gray-400"
+                        className="absolute top-3 left-4 text-black"
                         size={20}
                     />
                     <input
                         type="search"
-                        placeholder="Search by application name..."
-                        className="w-full pl-12 pr-4 py-2 border rounded-lg shadow-lg focus:outline-none focus:ring bg-transparent"
+                        placeholder="Cari aplikasi..."
+                        className="w-full pl-12 pr-4 py-2 border rounded-lg shadow-lg focus:outline-none text-black placeholder:text-black"
                         onChange={(e) => setSearchQuery(e.target.value)}
                         value={searchQuery}
                     />
                 </div>
             </div>
-            <div className="border-b"></div>
-            {/* Overlay Blur */}
-            {searchQuery && (
-                <div className="fixed inset-0 bg-black bg-opacity-40 z-10 pointer-events-none"></div>
-            )}
 
             {/* Pricelists */}
-            <div className="grid grid-cols-2 gap-4 mt-4 xl:grid-cols-6 z-20 relative">
+            <div className="grid grid-cols-2 gap-4 mt-4 md:grid-cols-4 xl:grid-cols-6">
                 {filteredApplications.length > 0 ? (
                     filteredApplications.map((application) => {
-                        // Group services by account type
                         const groupedServices = application.services.reduce(
                             (acc: Record<string, Service[]>, service) => {
                                 if (!acc[service.account_type]) {
@@ -79,7 +73,7 @@ export default function SearchablePricelists({
 
                         return (
                             <div key={application.id}>
-                                <div className="text-center p-6 border border-gray-500 shadow-xl rounded-md ">
+                                <div className="text-center p-6 border shadow-xl rounded-md">
                                     <div className="font-bold text-xl">
                                         <div className={playwrite_ar.className}>
                                             {application.name}
@@ -89,9 +83,9 @@ export default function SearchablePricelists({
                                         ([accountType, services]) => (
                                             <div
                                                 key={accountType}
-                                                className="mb-4"
+                                                className="mb-4 font-[family-name:var(--font-geist-sans)]"
                                             >
-                                                <div className="font-bold mt-4">
+                                                <div className="font-bold mt-4 ">
                                                     {accountType}
                                                 </div>
                                                 <ul>
@@ -113,7 +107,7 @@ export default function SearchablePricelists({
                         );
                     })
                 ) : (
-                    <div className="text-gray-500 text-center col-span-full">
+                    <div className="text-center col-span-full">
                         No applications match your search.
                     </div>
                 )}

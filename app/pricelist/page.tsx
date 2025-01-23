@@ -1,13 +1,8 @@
-import { Playwrite_AR, Montserrat } from "next/font/google";
+import { Playwrite_AR } from "next/font/google";
 import { createClient } from "@/utils/supabase/server";
-import SearchablePricelists from "../components/SearchablePricelists";
+import SearchablePricelists from "@/app/components/SearchablePricelists";
 
 const playwrite_ar = Playwrite_AR({
-    weight: "400",
-});
-
-const montserrat = Montserrat({
-    subsets: ["latin"],
     weight: "400",
 });
 
@@ -35,16 +30,14 @@ export default async function Pricelist() {
     }
 
     return (
-        <div className="min-h-screen p-8 sm:p-20 ">
+        <div className="min-h-screen p-8 sm:p-20">
             <header className="mb-6 text-center my-5">
                 <div className={playwrite_ar.className}>
                     <h1 className="text-6xl font-bold mb-10">Aprelestore</h1>
                 </div>
-                <div className={montserrat.className}>
-                    <p className="mt-2 text-lg">
-                        Explore our services and find the best option for you.
-                    </p>
-                </div>
+                <p className="mt-2 text-lg font-[family-name:var(--font-geist-sans)]">
+                    Explore our services and find the best option for you.
+                </p>
             </header>
             {/* Pass data to client component */}
             <SearchablePricelists applications={applications} />
