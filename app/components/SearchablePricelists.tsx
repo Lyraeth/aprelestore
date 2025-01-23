@@ -38,26 +38,21 @@ export default function SearchablePricelists({
     );
 
     return (
-        <div className="relative">
-            {/* Search Bar */}
-            <div className="flex justify-center mb-5">
+        <>
+            <div className="flex justify-center">
                 <div className="relative w-full max-w-lg">
-                    <CiSearch
-                        className="absolute top-3 left-4 text-black"
-                        size={20}
-                    />
+                    <CiSearch className="absolute top-3 left-4" size={20} />
                     <input
                         type="search"
                         placeholder="Cari aplikasi..."
-                        className="w-full pl-12 pr-4 py-2 border rounded-lg shadow-lg focus:outline-none text-black placeholder:text-black"
+                        className="w-full pl-12 pr-4 py-2 rounded-3xl dark:bg-gray-400/50"
                         onChange={(e) => setSearchQuery(e.target.value)}
                         value={searchQuery}
                     />
                 </div>
             </div>
 
-            {/* Pricelists */}
-            <div className="grid grid-cols-2 gap-4 mt-4 md:grid-cols-4 xl:grid-cols-6">
+            <div className="grid grid-cols-2 gap-4 mt-8 md:grid-cols-4 xl:grid-cols-6">
                 {filteredApplications.length > 0 ? (
                     filteredApplications.map((application) => {
                         const groupedServices = application.services.reduce(
@@ -73,7 +68,7 @@ export default function SearchablePricelists({
 
                         return (
                             <div key={application.id}>
-                                <div className="text-center p-6 border shadow-xl rounded-md">
+                                <div className="text-center p-6 shadow-sm rounded-md h-full border-blue-200 bg-gradient-to-b from-blue-300 to-blue-400/20 dark:bg-gradient-to-b dark:from-gray-700 dark:to-gray-800 hover:bg-blue-300 dark:hover:to-gray-900 hover:translate-y-1">
                                     <div className="font-bold text-xl">
                                         <div className={playwrite_ar.className}>
                                             {application.name}
@@ -112,6 +107,6 @@ export default function SearchablePricelists({
                     </div>
                 )}
             </div>
-        </div>
+        </>
     );
 }

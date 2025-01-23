@@ -30,17 +30,21 @@ export default async function Pricelist() {
     }
 
     return (
-        <div className="min-h-screen p-8 sm:p-20">
-            <header className="mb-6 text-center my-5">
-                <div className={playwrite_ar.className}>
-                    <h1 className="text-6xl font-bold mb-10">Aprelestore</h1>
-                </div>
-                <p className="mt-2 text-lg font-[family-name:var(--font-geist-sans)]">
-                    Explore our services and find the best option for you.
-                </p>
-            </header>
-            {/* Pass data to client component */}
-            <SearchablePricelists applications={applications} />
+        <div className="bg-gradient-to-b from-blue-200/80 via-blue-300/80 to-blue-400/80 dark:bg-gradient-to-b dark:from-black dark:via-gray-700 dark:gray-900">
+            <div className="min-h-screen p-8 sm:p-20">
+                <header className="mb-6 text-center my-5">
+                    <div className={playwrite_ar.className}>
+                        <h1 className="text-6xl font-bold mb-10">
+                            Aprelestore
+                        </h1>
+                    </div>
+                    <p className="mt-2 text-lg font-[family-name:var(--font-geist-sans)]">
+                        Explore our services and find the best option for you.
+                    </p>
+                </header>
+                {/* Pass data to client component */}
+                <SearchablePricelists applications={applications} />
+            </div>
         </div>
     );
 }
